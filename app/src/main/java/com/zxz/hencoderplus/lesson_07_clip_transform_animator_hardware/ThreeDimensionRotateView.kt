@@ -82,7 +82,7 @@ class ThreeDimensionRotateView(context: Context, attributeSet: AttributeSet) : V
         camera.applyToCanvas(canvas)
         canvas.rotate(-degreeZ)     // 反方向旋转回来，以便bitmap能够水品绘制
         canvas.translate(-centerX, -centerY)
-        canvas.drawBitmap(bitmap, x, y, paint);
+        canvas.drawBitmap(bitmap, x, y, paint)
 
         canvas.restore()
         camera.restore()
@@ -98,7 +98,7 @@ class ThreeDimensionRotateView(context: Context, attributeSet: AttributeSet) : V
         camera.applyToCanvas(canvas)
         canvas.rotate(-degreeZ)
         canvas.translate(-centerX, -centerY)
-        canvas.drawBitmap(bitmap, x, y, paint);
+        canvas.drawBitmap(bitmap, x, y, paint)
 
         canvas.restore()
         camera.restore()
@@ -113,7 +113,7 @@ class ThreeDimensionRotateView(context: Context, attributeSet: AttributeSet) : V
         canvas.translate(vWidth / 2, vHeight / 2)
         camera.applyToCanvas(canvas)
         canvas.translate(-vWidth / 2, -vHeight / 2)
-        canvas.drawBitmap(bitmap, vWidth / 2 - bWidth / 2, vHeight / 2 - bHeight / 2, paintOrange);
+        canvas.drawBitmap(bitmap, vWidth / 2 - bWidth / 2, vHeight / 2 - bHeight / 2, paintOrange)
 
         camera.restore()
         canvas.restore()
@@ -129,7 +129,7 @@ class ThreeDimensionRotateView(context: Context, attributeSet: AttributeSet) : V
 //        canvas.rotate(-degreeZ)
 //        canvas.translate(-centerX, -centerY)
 //        canvas.drawRect(0f, 0f, vWidth, vHeight, paintLightGreen)
-//        canvas.drawBitmap(bitmap, x, y, paint);
+//        canvas.drawBitmap(bitmap, x, y, paint)
 
         // 设置旋转中心 实现旋转
         camera.restore()
@@ -140,7 +140,7 @@ class ThreeDimensionRotateView(context: Context, attributeSet: AttributeSet) : V
         canvas.translate(vWidth / 2, vHeight / 2)
         camera.applyToCanvas(canvas)
         canvas.translate(-vWidth / 2, -vHeight / 2)
-        canvas.drawBitmap(bitmap, vWidth / 2 - bWidth / 2, vHeight / 2 - bHeight / 2, paintOrange);
+        canvas.drawBitmap(bitmap, vWidth / 2 - bWidth / 2, vHeight / 2 - bHeight / 2, paintOrange)
 
         camera.restore()
         canvas.restore()
@@ -152,7 +152,7 @@ class ThreeDimensionRotateView(context: Context, attributeSet: AttributeSet) : V
 
         canvas.clipRect(0f, 0f, centerX, vHeight)
         canvas.drawColor(colorYellow)
-        canvas.drawBitmap(bitmap, centerX - bHalfWidth, centerY - bHalfHeight, paintOrange);
+        canvas.drawBitmap(bitmap, centerX - bHalfWidth, centerY - bHalfHeight, paintOrange)
 
         camera.restore()
         canvas.restore()
@@ -178,14 +178,14 @@ class ThreeDimensionRotateView(context: Context, attributeSet: AttributeSet) : V
         camera.restore()
         canvas.restore()
 
-        canvas.save();
-        camera.save(); // 保存 Camera 的状态
-        camera.rotateX(30f); // 旋转 Camera 的三维空间
-        canvas.translate(centerX, centerY); // 旋转之后把投影移动回来
-        camera.applyToCanvas(canvas); // 把旋转投影到 Canvas
-        canvas.translate(-centerX, -centerY); // 旋转之前把绘制内容移动到轴心（原点）
-        camera.restore(); // 恢复 Camera 的状态
-        canvas.drawBitmap(bitmap, centerX - bHalfWidth, centerY - bHalfHeight, paintOrange);
+        canvas.save()
+        camera.save() // 保存 Camera 的状态
+        camera.rotateX(30f) // 旋转 Camera 的三维空间
+        canvas.translate(centerX, centerY) // 旋转之后把投影移动回来
+        camera.applyToCanvas(canvas) // 把旋转投影到 Canvas
+        canvas.translate(-centerX, -centerY) // 旋转之前把绘制内容移动到轴心（原点）
+        camera.restore() // 恢复 Camera 的状态
+        canvas.drawBitmap(bitmap, centerX - bHalfWidth, centerY - bHalfHeight, paintOrange)
 
         camera.restore()
         canvas.restore()
