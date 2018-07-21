@@ -3,4 +3,41 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="color_red">#f44336</color>
+    <color name="color_dark_red">#E91E63</color>
+    <color name="color_purple">#9C27B0</color>
+    <color name="color_dark_purple">#673AB7</color>
+    <color name="color_purple_blue">#3F51B5</color>
+    <color name="color_blue">#2196F3</color>
+    <color name="color_green_blue">#00BCD4</color>
+    <color name="color_dark_green">#009688</color>
+    <color name="color_green">#4CAF50</color>
+    <color name="color_light_green">#8BC34A</color>
+    <color name="color_yellow_green">#CDDC39</color>
+    <color name="color_yellow">#FFEB3B</color>
+    <color name="color_orange">#FFC107</color>
+    <color name="color_red_orange">#FF5722</color>
+    <color name="color_brown">#795548</color>
+    <color name="color_gray">#9E9E9E</color>
+    <color name="color_blue_gray">#607D8B</color>
+
+    <color name="translucent_red">#80f44336</color>
+    <color name="translucent_dark_red">#80E91E63</color>
+    <color name="translucent_purple">#809C27B0</color>
+    <color name="translucent_dark_purple">#80673AB7</color>
+    <color name="translucent_purple_blue">#803F51B5</color>
+    <color name="translucent_blue">#802196F3</color>
+    <color name="translucent_green_blue">#8000BCD4</color>
+    <color name="translucent_dark_green">#80009688</color>
+    <color name="translucent_green">#804CAF50</color>
+    <color name="translucent_light_green">#808BC34A</color>
+    <color name="translucent_yellow_green">#80CDDC39</color>
+    <color name="translucent_yellow">#80FFEB3B</color>
+    <color name="translucent_orange">#80FFC107</color>
+    <color name="translucent_red_orange">#80FF5722</color>
+    <color name="translucent_brown">#80795548</color>
+    <color name="translucent_gray">#809E9E9E</color>
+    <color name="translucent_blue_gray">#80607D8B</color>
+
 </resources>
