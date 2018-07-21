@@ -1,11 +1,15 @@
 package com.zxz.hencoderplus.lesson_07_clip_transform_animator_hardware
 
+import android.animation.Animator
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import com.blankj.utilcode.util.ConvertUtils
 import com.zxz.hencoderplus.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * <pre>
@@ -23,7 +27,7 @@ class ThreeDimensionRotateView(context: Context, attributeSet: AttributeSet) : V
     private val paintLightGreen = Paint(Paint.ANTI_ALIAS_FLAG)
 
     private val camera = Camera()
-    private val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.hencoder)
+    private val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.artanis)
     private val size = ConvertUtils.dp2px(100f).toFloat()
 
     private val colorYellow = context.resources.getColor(R.color.translucent_yellow)
@@ -185,6 +189,46 @@ class ThreeDimensionRotateView(context: Context, attributeSet: AttributeSet) : V
 
         camera.restore()
         canvas.restore()
+    }
+    
+    fun startAnimation() {
+        this.degreeZ = 0f
+        this.rightDegreeY = 0f
+        this.leftDegreeY = 0f
+
+        val yAnimatorDuration = 600L
+        val zAnimatorDuration = 1500L
+        val maxYDegree = 60f
+        val animatorRightY = ObjectAnimator.ofFloat(this, "rightDegreeY", 0f, maxYDegree)
+        animatorRightY.duration = yAnimatorDuration
+        val animatorZ = ObjectAnimator.ofFloat(this, "degreeZ", 0f, -270f)
+        animatorZ.duration = zAnimatorDuration
+        val animatorLeftY = ObjectAnimator.ofFloat(this, "leftDegreeY", 0f, -maxYDegree)
+        animatorLeftY.duration = yAnimatorDuration
+
+        val animatorRightY2 = ObjectAnimator.ofFloat(this, "rightDegreeY", maxYDegree, 0f)
+        animatorRightY2.duration = yAnimatorDuration
+        val animatorLeftY2 = ObjectAnimator.ofFloat(this, "leftDegreeY", -maxYDegree, 0f)
+        animatorLeftY2.duration = yAnimatorDuration
+
+        val animatorSet = AnimatorSet()
+        animatorSet.playSequentially(animatorRightY, animatorZ, animatorLeftY, animatorLeftY2, animatorRightY2)
+        animatorSet.start()
+        animatorSet.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationRepeat(animation: Animator?) {
+
+            }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                startAnimation()
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {
+            }
+
+            override fun onAnimationStart(animation: Animator?) {
+            }
+        })
     }
 
 }

@@ -21,46 +21,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        startAnimationSet()
-    }
-
-    private fun startAnimationSet() {
-        rotate_view.degreeZ = 0f
-        rotate_view.rightDegreeY = 0f
-        rotate_view.leftDegreeY = 0f
-
-        val yAnimatorDuration = 600L
-        val zAnimatorDuration = 1500L
-        val maxYDegree = 60f
-        val animatorRightY = ObjectAnimator.ofFloat(rotate_view, "rightDegreeY", 0f, maxYDegree)
-        animatorRightY.duration = yAnimatorDuration
-        val animatorZ = ObjectAnimator.ofFloat(rotate_view, "degreeZ", 0f, -270f)
-        animatorZ.duration = zAnimatorDuration
-        val animatorLeftY = ObjectAnimator.ofFloat(rotate_view, "leftDegreeY", 0f, -maxYDegree)
-        animatorLeftY.duration = yAnimatorDuration
-
-        val animatorRightY2 = ObjectAnimator.ofFloat(rotate_view, "rightDegreeY", maxYDegree, 0f)
-        animatorRightY2.duration = yAnimatorDuration
-        val animatorLeftY2 = ObjectAnimator.ofFloat(rotate_view, "leftDegreeY", -maxYDegree, 0f)
-        animatorLeftY2.duration = yAnimatorDuration
-
-        val animatorSet = AnimatorSet()
-        animatorSet.playSequentially(animatorRightY, animatorZ, animatorLeftY, animatorLeftY2, animatorRightY2)
-        animatorSet.start()
-        animatorSet.addListener(object : Animator.AnimatorListener {
-            override fun onAnimationRepeat(animation: Animator?) {
-
-            }
-
-            override fun onAnimationEnd(animation: Animator?) {
-                startAnimationSet()
-            }
-
-            override fun onAnimationCancel(animation: Animator?) {
-            }
-
-            override fun onAnimationStart(animation: Animator?) {
-            }
-        })
+        rotate_view.startAnimation()
     }
 }
