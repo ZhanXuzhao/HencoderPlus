@@ -7,13 +7,26 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.zxz.hencoderplus.lesson_07_clip_transform_animator_hardware.ThreeDimensionRotateView
-        android:id="@+id/rotate_view"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:background="#2000">
 
-    <!--<com.zxz.hencoderplus.lesson_07_clip_transform_animator_hardware.Lesson07DemoView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"/>-->
+        <com.zxz.hencoderplus.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username" />
+    </FrameLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2000"
+        android:visibility="gone">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username" />
+    </FrameLayout>
 </LinearLayout>
