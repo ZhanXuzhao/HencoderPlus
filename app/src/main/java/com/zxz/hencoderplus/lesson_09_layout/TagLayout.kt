@@ -3,6 +3,7 @@ package com.zxz.hencoderplus.lesson_09_layout
 import android.content.Context
 import android.graphics.Rect
 import android.util.AttributeSet
+import android.view.View
 import android.view.ViewGroup
 import java.util.ArrayList
 
@@ -15,16 +16,15 @@ import java.util.ArrayList
  * </pre>
  */
 class TagLayout(context: Context, attributeSet: AttributeSet) : ViewGroup(context, attributeSet) {
-    private var rects: ArrayList<Rect>? = null
+    private var rects: ArrayList<Rect> = ArrayList()
+
+    override fun onViewAdded(child: View?) {
+        super.onViewAdded(child)
+        rects.add(Rect())
+    }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        if (rects == null || rects!!.size < childCount) {
-            rects = ArrayList<Rect>(childCount)
-            for (i in 0..(childCount - 1)) {
-                rects!!.add(Rect())
-            }
-        }
         var widthUsed = 0
         var heightUsed = 0
         var currentLineTop = 0
@@ -39,12 +39,12 @@ class TagLayout(context: Context, attributeSet: AttributeSet) : ViewGroup(contex
                 heightUsed = currentLineTop + child.measuredHeight
             }
             measureChildWithMargins(child, widthMeasureSpec, widthUsed, heightMeasureSpec, heightUsed)
-            val rect = rects!![i]
+            val rect = rects[i]
             rect.left = widthUsed
             rect.top = currentLineTop
             rect.right = rect.left + child.measuredWidth
             rect.bottom = rect.top + child.measuredHeight
-            rects!!.add(rect)
+            rects.add(rect)
 
             currentLineMaxHeight = Math.max(currentLineMaxHeight, child.measuredHeight)
             widthUsed += child.measuredWidth
@@ -57,7 +57,7 @@ class TagLayout(context: Context, attributeSet: AttributeSet) : ViewGroup(contex
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         for (i in 0..(childCount - 1)) {
             val child = getChildAt(i)
-            child.layout(rects!![i].left, rects!![i].top, rects!![i].right, rects!![i].bottom)
+            child.layout(rects[i].left, rects[i].top, rects[i].right, rects[i].bottom)
         }
     }
 
