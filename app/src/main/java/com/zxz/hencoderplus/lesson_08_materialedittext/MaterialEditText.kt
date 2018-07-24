@@ -1,4 +1,4 @@
-package com.zxz.hencoderplus.materialedittext
+package com.zxz.hencoderplus.lesson_08_materialedittext
 
 import android.animation.ObjectAnimator
 import android.content.Context

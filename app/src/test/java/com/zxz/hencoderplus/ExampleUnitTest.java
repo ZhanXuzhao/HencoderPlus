@@ -1,6 +1,11 @@
 package com.zxz.hencoderplus;
 
+import android.graphics.Rect;
+
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -13,5 +18,6 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
+        List<Integer> list = new ArrayList<>(10);
     }
 }
