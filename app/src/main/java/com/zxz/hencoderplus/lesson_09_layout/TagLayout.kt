@@ -20,7 +20,9 @@ class TagLayout(context: Context, attributeSet: AttributeSet) : ViewGroup(contex
 
     override fun onViewAdded(child: View?) {
         super.onViewAdded(child)
-        rects.add(Rect())
+        if(rects.size < childCount) {
+            rects.add(Rect())
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
