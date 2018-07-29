@@ -27,7 +27,6 @@ class BitmapUtil {
             return BitmapFactory.decodeResource(context.resources, drawableId, options)
         }
 
-        //todo
         fun getSquareBitmap(context: Context, px: Int, drawableId: Int): Bitmap {
             val options = BitmapFactory.Options()
             options.inJustDecodeBounds = true
@@ -37,6 +36,20 @@ class BitmapUtil {
             options.inTargetDensity = px
             options.inJustDecodeBounds = false
             val targetSize = Math.min(Math.min(options.outWidth, options.outHeight), px)
+            val bitmap = BitmapFactory.decodeResource(context.resources, drawableId, options)
+            return Bitmap.createBitmap(bitmap, 0, 0, targetSize, targetSize)
+        }
+
+        fun getSquareBitmap(context: Context, drawableId: Int): Bitmap {
+            val options = BitmapFactory.Options()
+            options.inJustDecodeBounds = true
+            BitmapFactory.decodeResource(context.resources, drawableId, options)
+            options.inJustDecodeBounds = false
+            options.inDensity = options.outHeight
+            val size = Math.min(options.outWidth, options.outHeight)
+            options.inTargetDensity = size
+            options.inJustDecodeBounds = false
+            val targetSize = Math.min(options.outWidth, options.outHeight)
             val bitmap = BitmapFactory.decodeResource(context.resources, drawableId, options)
             return Bitmap.createBitmap(bitmap, 0, 0, targetSize, targetSize)
         }

@@ -27,31 +27,31 @@ class TagLayout(context: Context, attributeSet: AttributeSet) : ViewGroup(contex
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        var widthUsed = 0
         var heightUsed = 0
         var currentLineTop = 0
         var currentLineMaxHeight = 0
+        var currentLineWidthUsed = 0
         var maxWidthUsed = 0
         for (i in 0..(childCount - 1)) {
             val child = getChildAt(i)
-            if (child.measuredWidth + widthUsed > MeasureSpec.getSize(widthMeasureSpec)) {
-                widthUsed = 0
+            if (child.measuredWidth + currentLineWidthUsed > MeasureSpec.getSize(widthMeasureSpec)) {
+                currentLineWidthUsed = 0
                 currentLineTop += currentLineMaxHeight
                 currentLineMaxHeight = child.measuredHeight
                 heightUsed = currentLineTop + child.measuredHeight
             }
-            measureChildWithMargins(child, widthMeasureSpec, widthUsed, heightMeasureSpec, heightUsed)
+            measureChildWithMargins(child, widthMeasureSpec, currentLineWidthUsed, heightMeasureSpec, heightUsed)
             val rect = rects[i]
-            rect.left = widthUsed
+            rect.left = currentLineWidthUsed
             rect.top = currentLineTop
             rect.right = rect.left + child.measuredWidth
             rect.bottom = rect.top + child.measuredHeight
             rects.add(rect)
 
             currentLineMaxHeight = Math.max(currentLineMaxHeight, child.measuredHeight)
-            widthUsed += child.measuredWidth
+            currentLineWidthUsed += child.measuredWidth
             heightUsed = currentLineTop + currentLineMaxHeight
-            maxWidthUsed = Math.max(maxWidthUsed, widthUsed)
+            maxWidthUsed = Math.max(maxWidthUsed, currentLineWidthUsed)
         }
         setMeasuredDimension(maxWidthUsed, heightUsed)
     }
