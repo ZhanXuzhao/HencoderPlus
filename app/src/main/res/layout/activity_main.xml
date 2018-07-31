@@ -8,8 +8,8 @@
     tools:context=".MainActivity">
 
 
-    <com.zxz.hencoderplus.lesson_11_scalable_image_view.ScalableImageView
+    <com.zxz.hencoderplus.lesson_12_multitouch.MultiTouchView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>
